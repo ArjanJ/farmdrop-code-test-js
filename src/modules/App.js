@@ -1,5 +1,12 @@
 import React from 'react';
 
-const App = () => <h1>Hello</h1>;
+import { Products } from './Products/Products';
+
+const App = () => (
+  <div>
+    <header>Header</header>
+    <Products />
+  </div>
+);
 
 export default App;
