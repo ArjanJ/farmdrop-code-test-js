@@ -13,6 +13,9 @@ export const GlobalStyles = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     box-sizing: border-box;
     cursor: default;
+    font-family: 'hk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+          Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+          'Segoe UI Symbol';
     font-size: 0.625rem;
     text-rendering: optimizeLegibility;
     text-size-adjust: 100%;
