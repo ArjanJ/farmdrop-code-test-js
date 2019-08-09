@@ -1,14 +1,14 @@
-import React from 'react';
-import { useQuery } from 'urql';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
-import { productSearchQuery } from '../../queries/productSearchQuery';
+import { getProducts } from './actions/getProductsAction';
 
 export const Products = () => {
-  const [result] = useQuery({
-    query: productSearchQuery,
-  });
+  const dispatch = useDispatch();
 
-  const { fetching, data } = result;
+  useEffect(() => {
+    dispatch(getProducts());
+  });
 
   return <div>Products</div>;
 };
