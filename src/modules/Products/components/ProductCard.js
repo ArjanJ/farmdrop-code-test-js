@@ -37,16 +37,16 @@ const Card = styled.li`
 `;
 
 const CardContent = styled.div`
-  padding: 20px 16px;
+  padding: 20px;
 `;
 
 const CardName = styled.h2`
-  font-size: 18px;
+  font-size: 17px;
   margin-bottom: 16px;
 `;
 
 const CardProducerName = styled.p`
-  color: ${colors.GREEN_2};
+  color: ${colors.GREEN};
   font-weight: 500;
   margin-bottom: 16px;
 `;

@@ -26,8 +26,10 @@ const Tag = styled.p`
   bottom: 0;
   color: white;
   display: inline-block;
+  font-size: 15px;
+  font-weight: 500;
   left: 0;
-  padding: 16px;
+  padding: 10px 20px;
   position: absolute;
   text-transform: uppercase;
 `;
