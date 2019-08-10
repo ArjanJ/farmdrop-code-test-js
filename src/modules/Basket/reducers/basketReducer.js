@@ -2,7 +2,7 @@ import { ADD_TO_BASKET, REMOVE_FROM_BASKET } from '../actions/basketActions';
 
 const initialState = {
   addedIds: [],
-  quantityByIds: {},
+  quantityById: {},
 };
 
 const addedIds = (state = initialState.addedIds, action) => {

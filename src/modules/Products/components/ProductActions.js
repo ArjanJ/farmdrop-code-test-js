@@ -1,14 +1,29 @@
+import PropTypes from 'prop-types';
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
 import { colors } from '../../../styles/colors';
+import { addToBasket } from '../../Basket/actions/basketActions';
 
-export const ProductActions = () => (
-  <ProductActionsWrapper>
-    <ProductActionsSquare />
-    <Button type="button">Add</Button>
-  </ProductActionsWrapper>
-);
+export const ProductActions = ({ productName }) => {
+  const dispatch = useDispatch();
+
+  const onClick = () => dispatch(addToBasket(productName));
+
+  return (
+    <ProductActionsWrapper>
+      <ProductActionsSquare />
+      <Button onClick={onClick} type="button">
+        Add
+      </Button>
+    </ProductActionsWrapper>
+  );
+};
+
+ProductActions.propTypes = {
+  productName: PropTypes.string.isRequired,
+};
 
 const ProductActionsWrapper = styled.div`
   display: flex;

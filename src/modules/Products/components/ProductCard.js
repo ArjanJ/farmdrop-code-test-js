@@ -33,7 +33,7 @@ export const ProductCard = ({ price, product, setVariant, variant }) => (
           saleText={product.saleText}
           salePrice={product.salePrice}
         />
-        <ProductActions />
+        <ProductActions productName={product.name} />
       </div>
     </ProductCardContent>
   </ProductCardItem>
