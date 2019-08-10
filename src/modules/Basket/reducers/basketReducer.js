@@ -5,6 +5,9 @@ const initialState = {
   quantityById: {},
 };
 
+export const getQuantity = (state, productId) =>
+  state.quantityById[productId] || 0;
+
 export default function(state = initialState, action) {
   switch (action.type) {
     case ADD_TO_BASKET: {
