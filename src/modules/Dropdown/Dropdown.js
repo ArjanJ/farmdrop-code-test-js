@@ -17,7 +17,7 @@ export const Dropdown = ({ onChange, options = [], value }) => {
     setIsOpen(false);
   };
 
-  const handleKeyDown = ({ keyCode }: KeyboardEvent) => {
+  const handleKeyDown = ({ keyCode }) => {
     // Close dropdown when esc key is pressed.
     if (keyCode === 27) {
       setIsOpen(false);

@@ -28,7 +28,7 @@ export const ProductCard = ({ price, product, setVariant, variant }) => (
       <div>
         <ProductPrices
           price={price}
-          pricePerUnit={variant.pricePerUnit}
+          pricePerUnit={variant.pricePerUnit || product.pricePerUnit}
           saleText={product.saleText}
           salePrice={product.salePrice}
         />
