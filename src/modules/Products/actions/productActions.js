@@ -31,7 +31,7 @@ export function getProducts() {
 
     try {
       const { productSearch } = await client.request(productSearchQuery);
-      dispatch(getProductsSuccess(productSearch.nodes));
+      return dispatch(getProductsSuccess(productSearch.nodes));
     } catch (error) {
       return dispatch(getProductsFailure());
     }
