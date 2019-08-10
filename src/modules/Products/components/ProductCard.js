@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import { colors } from '../../../styles/colors';
@@ -7,8 +7,89 @@ import { ProductMedia } from './ProductMedia';
 import { ProductPrice } from './ProductPrice';
 import { ProductVariants } from './ProductVariants';
 
+function getInitialVariant(product) {
+  if (product.variants.length === 0) {
+    return { pricePerUnit: product.pricePerUnit };
+  }
+
+  return product.variants[0];
+}
+
+// function getInitialPrice(product) {
+//   if (product.variants.length === 0) {
+//     return { pricePerUnit: product.pricePerUnit };
+//   }
+
+//   return product.variants[0];
+// }
+
+function parseAmountAndUnitsFromMeasurement(measurement = '') {
+  const [, rawAmount] = measurement.split('(');
+  let amount = '';
+  let units = '';
+
+  for (let i = 0; i < rawAmount.length; i++) {
+    const isNumber = !isNaN(rawAmount[i]);
+    const isDecimal = rawAmount[i] === '.' && !isNaN(rawAmount[i - 1]);
+    const isUnit = rawAmount[i].match(/k|g/gm);
+
+    if (isNumber || isDecimal) {
+      amount += rawAmount[i];
+    }
+
+    if (isUnit) {
+      units += rawAmount[i];
+    }
+  }
+
+  return {
+    amount: Number(amount.trimLeft()),
+    units,
+  };
+}
+
+function calculatePriceFromAmountAndPricePerUnit(amount, units, pricePerUnit) {
+  switch (units) {
+    case 'kg':
+      return pricePerUnit * amount;
+    case 'g':
+      return pricePerUnit * (amount / 1000);
+    default:
+      return 0;
+  }
+}
+
+function parsePricePerUnit(pricePerUnit) {
+  return Number(pricePerUnit.replace(/[^\d.]/g, ''));
+}
+
+function roundToTwo(num) {
+  return +(Math.round(num + 'e+2') + 'e-2');
+}
+
 export const ProductCard = ({ product }) => {
-  const [pricePerUnit, setPricePerUnit] = useState(product.pricePerUnit);
+  const [variant, setVariant] = useState(getInitialVariant(product));
+  const [price, setPrice] = useState(product.price);
+
+  useEffect(() => {
+    const { measurement, pricePerUnit } = variant;
+
+    if (product.variants.length && pricePerUnit) {
+      const { amount, units } = parseAmountAndUnitsFromMeasurement(
+        measurement.displayName
+      );
+      const parsedPricedPerUnit = parsePricePerUnit(pricePerUnit);
+      const updatedPrice = roundToTwo(
+        calculatePriceFromAmountAndPricePerUnit(
+          amount,
+          units,
+          parsedPricedPerUnit
+        )
+      );
+
+      setPrice({ pence: updatedPrice * 100 });
+    }
+  }, [product.variants, variant]);
 
   return (
     <Card>
@@ -23,14 +104,14 @@ export const ProductCard = ({ product }) => {
           <CardProducerName>{product.producer.name}</CardProducerName>
           <ProductVariants
             displayName={product.measurement.displayName}
-            setPricePerUnit={setPricePerUnit}
+            setVariant={setVariant}
             variants={product.variants}
           />
         </div>
         <div>
           <ProductPrice
-            price={product.price}
-            pricePerUnit={pricePerUnit}
+            price={price}
+            pricePerUnit={variant}
             saleText={product.saleText}
             salePrice={product.salePrice}
           />

@@ -3,20 +3,37 @@ import styled from 'styled-components';
 
 import { colors } from '../../../styles/colors';
 
-export const ProductPrice = ({ price, pricePerUnit, saleText, salePrice }) => {
-  return (
-    <Wrapper>
-      {saleText && <SaleText>{saleText}</SaleText>}
-      {salePrice && <OldPrice>{price.pence}</OldPrice>}
-      <PriceRow>
-        <Price isSale={!!salePrice}>
-          {salePrice ? salePrice.pence : price.pence}
-        </Price>
-        <PricePerUnit>{pricePerUnit}</PricePerUnit>
-      </PriceRow>
-    </Wrapper>
+const format = num =>
+  new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' }).format(
+    num
   );
-};
+
+function parseDiscount(discount) {
+  return Number(discount.replace(/[^\d.]/g, ''));
+}
+
+function addDiscount(price, discount) {
+  return price - price * (discount / 100);
+}
+
+function formatPriceWithDiscount(price, discount) {
+  return format(addDiscount(price, parseDiscount(discount)) / 100);
+}
+
+export const ProductPrice = ({ price, pricePerUnit, saleText, salePrice }) => (
+  <Wrapper>
+    {saleText && <SaleText>{saleText}</SaleText>}
+    {salePrice && <OldPrice>{format(price.pence / 100)}</OldPrice>}
+    <PriceRow>
+      <Price isSale={!!salePrice}>
+        {salePrice
+          ? formatPriceWithDiscount(price.pence, saleText)
+          : format(price.pence / 100)}
+      </Price>
+      <PricePerUnit>{pricePerUnit.pricePerUnit}</PricePerUnit>
+    </PriceRow>
+  </Wrapper>
+);
 
 const Wrapper = styled.div`
   display: flex;
