@@ -76,7 +76,7 @@ export const Dropdown = ({ onChange, options = [], selected }) => {
           </Fragment>
         ))}
       </DropdownOptions>
-      <DropdownChevron />
+      <DropdownChevron isOpen={isOpen} />
     </DropdownWrapper>
   );
 };
@@ -92,8 +92,9 @@ Dropdown.propTypes = {
   selected: PropTypes.number.isRequired,
 };
 
-const DropdownChevron = () => (
+const DropdownChevron = ({ isOpen }) => (
   <DropdownChevronSvg
+    isOpen={isOpen}
     xmlns="http://www.w3.org/2000/svg"
     width="10"
     height="10"
@@ -180,7 +181,8 @@ const DropdownChevronSvg = styled.svg`
   position: absolute;
   pointer-events: none;
   right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 10px;
+  transform: ${({ isOpen }) => (isOpen ? 'rotateX(180deg)' : 'rotateX(0deg)')};
+  transition: transform 0.3s ${easing.OUT};
   width: 16px;
 `;
