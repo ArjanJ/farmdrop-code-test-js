@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
 import {
+  calculatePriceFromAmountAndPricePerUnit,
   getInitialVariant,
   parseAmountAndUnitsFromMeasurement,
-  calculatePriceFromAmountAndPricePerUnit,
   parsePrice,
   roundToTwo,
 } from '../../../utils/utils';
