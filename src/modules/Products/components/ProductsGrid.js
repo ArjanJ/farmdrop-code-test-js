@@ -23,4 +23,5 @@ const ProductsGridList = styled.ul`
   list-style-type: none;
   margin: auto;
   max-width: 1140px;
+  padding: 0 12px;
 `;

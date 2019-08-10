@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { colors } from '../../../styles/colors';
 
 export const ProductMedia = React.memo(({ alt, media, tags = [] }) => (
-  <Media url={media}>
+  <Media style={{ background: `url('${media}') center/cover no-repeat` }}>
     {tags.map(tag => (
       <Tag key={tag.name}>{tag.name}</Tag>
     ))}
@@ -22,12 +22,8 @@ ProductMedia.propTypes = {
   ).isRequired,
 };
 
-const Media = styled.div.attrs(({ url }) => ({
-  style: {
-    background: `url(${url}) center/cover no-repeat`,
-  },
-}))`
-  height: 197px
+const Media = styled.div`
+  height: 216px
   position: relative;
 `;
 

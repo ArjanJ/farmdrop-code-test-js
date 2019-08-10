@@ -18,6 +18,8 @@ const StyledHeader = styled.header`
   display: flex;
   height: 60px;
   justify-content: center;
+  margin-bottom: 24px;
+  padding: 0 12px;
 `;
 
 const HeaderWrapper = styled.div`
