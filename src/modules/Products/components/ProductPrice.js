@@ -23,6 +23,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   height: 120px;
   justify-content: flex-end;
+  margin-bottom: 16px;
 `;
 
 const PriceRow = styled.div`

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { colors } from '../../../styles/colors';
+import { ProductActions } from './ProductActions';
 import { ProductMedia } from './ProductMedia';
 import { ProductPrice } from './ProductPrice';
 import { ProductVariants } from './ProductVariants';
@@ -29,6 +30,7 @@ export const ProductCard = ({ product }) => (
           saleText={product.saleText}
           salePrice={product.salePrice}
         />
+        <ProductActions />
       </div>
     </CardContent>
   </Card>
