@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -37,6 +38,20 @@ export const ProductCard = ({ price, product, setVariant, variant }) => (
     </ProductCardContent>
   </ProductCardItem>
 );
+
+ProductCard.propTypes = {
+  price: PropTypes.shape({
+    pence: PropTypes.number,
+  }).isRequired,
+  product: PropTypes.object,
+  setVariant: PropTypes.func.isRequired,
+  variant: PropTypes.shape({
+    measurement: PropTypes.shape({
+      displayName: PropTypes.string,
+    }),
+    pricePerUnit: PropTypes.string,
+  }).isRequired,
+};
 
 const ProductCardItem = styled.li`
   border: 1px solid ${colors.LIGHT_GREEN};

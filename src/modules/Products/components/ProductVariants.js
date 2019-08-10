@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -35,6 +36,19 @@ export const ProductVariants = ({
       )}
     </ProductVariantsWrapper>
   );
+};
+
+const VariantType = PropTypes.shape({
+  measurement: PropTypes.shape({
+    displayName: PropTypes.string,
+  }),
+});
+
+ProductVariants.propTypes = {
+  displayName: PropTypes.string.isRequired,
+  setVariant: PropTypes.func.isRequired,
+  variant: VariantType.isRequired,
+  variants: PropTypes.arrayOf(VariantType),
 };
 
 const ProductVariantsWrapper = styled.div`

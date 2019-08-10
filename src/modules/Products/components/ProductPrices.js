@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -26,6 +27,17 @@ export const ProductPrices = ({ price, pricePerUnit, saleText, salePrice }) => (
     </ProductPriceRow>
   </ProductPriceWrapper>
 );
+
+const PriceType = PropTypes.shape({
+  pence: PropTypes.number,
+});
+
+ProductPrices.propTypes = {
+  price: PriceType.isRequired,
+  pricePerUnit: PropTypes.string.isRequired,
+  salePrice: PriceType,
+  saleText: PropTypes.string,
+};
 
 const ProductPriceWrapper = styled.div`
   display: flex;

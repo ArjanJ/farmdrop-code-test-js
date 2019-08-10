@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -10,6 +11,16 @@ export const ProductMedia = React.memo(({ alt, media, tags = [] }) => (
     ))}
   </Media>
 ));
+
+ProductMedia.propTypes = {
+  alt: PropTypes.string.isRequired,
+  media: PropTypes.string.isRequired,
+  tags: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+    })
+  ).isRequired,
+};
 
 const Media = styled.div.attrs(({ url }) => ({
   style: {
