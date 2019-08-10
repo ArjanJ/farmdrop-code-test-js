@@ -5,31 +5,52 @@ const initialState = {
   quantityById: {},
 };
 
-const addedIds = (state = initialState.addedIds, action) => {
-  switch (action.type) {
-    case ADD_TO_BASKET:
-      if (state.indexOf(action.payload) !== -1) {
-        return state;
-      }
-      return [...state, action.payload];
-    default:
-      return state;
-  }
-};
-
-const quantityById = (state = initialState.quantityById, action) => {
-  switch (action.type) {
-    case ADD_TO_BASKET:
-      const { payload } = action;
-      return { ...state, [payload]: (state[payload] || 0) + 1 };
-    default:
-      return state;
-  }
-};
-
 export default function(state = initialState, action) {
-  return {
-    addedIds: addedIds(state.addedIds, action),
-    quantityById: quantityById(state.quantityById, action),
-  };
+  switch (action.type) {
+    case ADD_TO_BASKET: {
+      const { payload } = action;
+
+      // Add item to basket if first time adding it.
+      const addedIds = state.addedIds.includes(payload)
+        ? state.addedIds
+        : [...state.addedIds, payload];
+
+      // Increment quantity of item.
+      const quantityById = {
+        ...state.quantityById,
+        [payload]: (state.quantityById[payload] || 0) + 1,
+      };
+
+      return {
+        addedIds,
+        quantityById,
+      };
+    }
+    case REMOVE_FROM_BASKET: {
+      const { payload } = action;
+
+      // Remove item from basket if there is only 1 in there.
+      if (state.quantityById[payload] === 1) {
+        const { [payload]: removedId, ...quantityById } = state.quantityById;
+
+        return {
+          addedIds: state.addedIds.filter(id => id !== payload),
+          quantityById,
+        };
+      }
+
+      // Remove 1 quantity from the basket.
+      const quantityById = {
+        ...state.quantityById,
+        [payload]: state.quantityById[payload] - 1,
+      };
+
+      return {
+        ...state,
+        quantityById,
+      };
+    }
+    default:
+      return state;
+  }
 }
