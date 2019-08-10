@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { getProducts } from './actions/getProductsAction';
+import { getProducts } from './actions/productActions';
 import { ProductsGrid } from './components/ProductsGrid';
 
 export const Products = () => {

@@ -2,15 +2,15 @@ import {
   GET_PRODUCTS_REQUEST,
   GET_PRODUCTS_SUCCESS,
   GET_PRODUCTS_FAILURE,
-} from '../actions/getProductsAction';
+} from '../actions/productActions';
 
-const intialState = {
+const initialState = {
   error: false,
   isFetching: false,
   products: [],
 };
 
-export default function(state = intialState, action) {
+export default function(state = initialState, action) {
   switch (action.type) {
     case GET_PRODUCTS_REQUEST:
       return {
