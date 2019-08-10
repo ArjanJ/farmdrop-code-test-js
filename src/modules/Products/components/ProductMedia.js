@@ -3,18 +3,20 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { colors } from '../../../styles/colors';
+import { ProductBasketOverlay } from './ProductBasketOverlay';
 
-export const ProductMedia = React.memo(({ alt, media, tags = [] }) => (
+export const ProductMedia = React.memo(({ media, productName, tags = [] }) => (
   <Media style={{ background: `url('${media}') center/cover no-repeat` }}>
     {tags.map(tag => (
       <Tag key={tag.name}>{tag.name}</Tag>
     ))}
+    <ProductBasketOverlay productName={productName} />
   </Media>
 ));
 
 ProductMedia.propTypes = {
-  alt: PropTypes.string.isRequired,
   media: PropTypes.string.isRequired,
+  productName: PropTypes.string.isRequired,
   tags: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,

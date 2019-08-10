@@ -3,6 +3,7 @@ import React, { Fragment, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 import { colors } from '../../styles/colors';
+import { easing } from '../../styles/easing';
 
 /**
  * Dropdown
@@ -111,7 +112,7 @@ const DropdownWrapper = styled.div`
   border-radius: 3px;
   cursor: pointer;
   position: relative;
-  transition: background 0.15s ease-out;
+  transition: background 0.3s ${easing.OUT};
 
   &:hover {
     background: #dee3dc;
@@ -137,7 +138,7 @@ const DropdownOptions = styled.div`
   opacity: ${({ isOpen }) => (isOpen ? 1 : 0)};
   position: absolute;
   top: 36px;
-  transition: all 0.15s ease-out;
+  transition: all 0.3s ${easing.OUT};
   visibility: ${({ isOpen }) => (isOpen ? 'visible' : 'hidden')};
   width: 100%;
   z-index: 1;
@@ -160,7 +161,7 @@ const DropdownOptionLabel = styled.label`
   font-size: 14px;
   padding: 6px 12px;
   text-transform: uppercase;
-  transition: background 0.15s ease-out;
+  transition: background 0.3s ${easing.OUT};
 
   &:last-child {
     border-bottom: none;

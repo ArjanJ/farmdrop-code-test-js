@@ -11,8 +11,8 @@ import { ProductVariants } from './ProductVariants';
 export const ProductCard = ({ price, product, setVariant, variant }) => (
   <ProductCardItem>
     <ProductMedia
-      alt={product.name}
       media={product.media[0].url}
+      productName={product.name}
       tags={product.tags}
     />
     <ProductCardContent>

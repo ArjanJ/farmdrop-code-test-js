@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import { colors } from '../../../styles/colors';
+import { easing } from '../../../styles/easing';
 import {
   addToBasket,
   removeFromBasket,
@@ -66,6 +67,11 @@ const ProductActionsAddButton = styled.button`
   font-weight: 700;
   height: 40px;
   margin-left: 12px;
+  transition: background 0.3s ${easing.OUT};
+
+  &:hover {
+    background: #009e82;
+  }
 `;
 
 const ProductActionsSquareButton = styled(ProductActionsSquare)`
@@ -80,4 +86,5 @@ const ProductActionsQuantity = styled.span`
   display: inline-block;
   font-size: 18px;
   margin: 0 8px;
+  user-select: none;
 `;
