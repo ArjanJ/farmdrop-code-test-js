@@ -8,24 +8,26 @@ import {
   parsePrice,
 } from '../../../utils/utils';
 
-export const ProductPrice = ({ price, pricePerUnit, saleText, salePrice }) => (
-  <Wrapper>
-    {saleText && <SaleText>{saleText}</SaleText>}
-    {salePrice && <OldPrice>{formatCurrency(price.pence / 100)}</OldPrice>}
-    <PriceRow>
-      <Price isSale={!!salePrice}>
+export const ProductPrices = ({ price, pricePerUnit, saleText, salePrice }) => (
+  <ProductPriceWrapper>
+    {saleText && <ProductSaleText>{saleText}</ProductSaleText>}
+    {salePrice && (
+      <ProductOldPrice>{formatCurrency(price.pence / 100)}</ProductOldPrice>
+    )}
+    <ProductPriceRow>
+      <ProductPrice isSale={!!salePrice}>
         {formatCurrency(
           salePrice
             ? applyDiscount(price.pence, parsePrice(saleText)) / 100
             : price.pence / 100
         )}
-      </Price>
-      <PricePerUnit>{pricePerUnit.pricePerUnit}</PricePerUnit>
-    </PriceRow>
-  </Wrapper>
+      </ProductPrice>
+      <ProductPricePerUnit>{pricePerUnit}</ProductPricePerUnit>
+    </ProductPriceRow>
+  </ProductPriceWrapper>
 );
 
-const Wrapper = styled.div`
+const ProductPriceWrapper = styled.div`
   display: flex;
   flex-direction: column;
   height: 120px;
@@ -33,29 +35,29 @@ const Wrapper = styled.div`
   margin-bottom: 16px;
 `;
 
-const PriceRow = styled.div`
+const ProductPriceRow = styled.div`
   align-items: flex-end;
   display: flex;
   justify-content: space-between;
 `;
 
-const Price = styled.span`
+const ProductPrice = styled.span`
   color: ${({ isSale }) => (isSale ? colors.RED : colors.BLACK)};
   font-size: 24px;
 `;
 
-const OldPrice = styled.p`
+const ProductOldPrice = styled.p`
   color: ${colors.BLACK};
   margin-bottom: 18px;
   text-decoration: line-through;
 `;
 
-const SaleText = styled.p`
+const ProductSaleText = styled.p`
   color: ${colors.RED};
   font-weight: 500;
   margin-bottom: 18px;
 `;
 
-const PricePerUnit = styled.span`
+const ProductPricePerUnit = styled.span`
   color: ${colors.DARK_GREEN};
 `;

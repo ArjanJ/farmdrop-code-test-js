@@ -7,9 +7,9 @@ export const ProductVariants = ({ displayName, setVariant, variants = [] }) => {
   const handleChange = ({ target }) => setVariant(variants[target.value]);
 
   return (
-    <Wrapper>
+    <ProductVariantsWrapper>
       {!variants.length && displayName && (
-        <DisplayName>{displayName}</DisplayName>
+        <ProductDisplayName>{displayName}</ProductDisplayName>
       )}
       {variants.length > 0 && (
         <SelectWrapper>
@@ -23,7 +23,7 @@ export const ProductVariants = ({ displayName, setVariant, variants = [] }) => {
           <Chevron />
         </SelectWrapper>
       )}
-    </Wrapper>
+    </ProductVariantsWrapper>
   );
 };
 
@@ -42,11 +42,11 @@ const Chevron = () => (
   </StyledChevron>
 );
 
-const Wrapper = styled.div`
+const ProductVariantsWrapper = styled.div`
   margin-bottom: 18px;
 `;
 
-const DisplayName = styled.p`
+const ProductDisplayName = styled.p`
   color: ${colors.GREEN_2};
   font-size: 17px;
   text-transform: uppercase;

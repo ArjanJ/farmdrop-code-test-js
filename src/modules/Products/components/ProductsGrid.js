@@ -2,21 +2,21 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
-import { ProductCard } from './ProductCard';
+import { Product } from './Product';
 
 export const ProductsGrid = () => {
   const { products } = useSelector(state => state.products);
 
   return (
-    <Grid>
+    <ProductsGridList>
       {products.map(product => (
-        <ProductCard key={product.name} product={product} />
+        <Product key={product.name} product={product} />
       ))}
-    </Grid>
+    </ProductsGridList>
   );
 };
 
-const Grid = styled.ul`
+const ProductsGridList = styled.ul`
   display: grid;
   grid-gap: 16px;
   grid-template-columns: repeat(auto-fill, minmax(264px, 1fr));

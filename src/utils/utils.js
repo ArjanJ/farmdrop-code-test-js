@@ -1,3 +1,11 @@
+/**
+ * getInitialVariant
+ * Used to grab the first variant if the product has
+ * variants. If it doesn't, product.pricePerUnit is returned.
+ *
+ * @param {object} product product iteam from the API
+ * @returns { measurement?: { displayName: string }, pricePerUnit: string }
+ */
 export function getInitialVariant(product) {
   if (product.variants.length === 0) {
     return { pricePerUnit: product.pricePerUnit };
@@ -6,8 +14,16 @@ export function getInitialVariant(product) {
   return product.variants[0];
 }
 
-export function parseAmountAndUnitsFromMeasurement(measurement = '') {
-  const [, rawAmount] = measurement.split('(');
+/**
+ * parseAmountAndUnitsFromMeasurement
+ * Takes the displayName like 'SHORT LEG (2KG)' and
+ * returns ({ amount: 2, units: 'kg' })
+ *
+ * @param {string} displayName the displayName in the measurement obj.
+ * @returns { amount: number, units: 'kg' | 'g'}
+ */
+export function parseAmountAndUnitsFromMeasurement(displayName = '') {
+  const [, rawAmount] = displayName.split('(');
   let amount = '';
   let units = '';
 
@@ -31,12 +47,23 @@ export function parseAmountAndUnitsFromMeasurement(measurement = '') {
   };
 }
 
+/**
+ * calculatePriceFromAmountAndPricePerUnit
+ * When the user selects a different variant, this function
+ * is used to calculate the new price based on the updated
+ * price per unit and amount located in the displayName field.
+ *
+ * @param {number} amount
+ * @param {string} units
+ * @param {number} pricePerUnit
+ * @returns number
+ */
 export function calculatePriceFromAmountAndPricePerUnit(
   amount,
   units,
   pricePerUnit
 ) {
-  switch (units) {
+  switch (units.toLowerCase()) {
     case 'kg':
       return pricePerUnit * amount;
     case 'g':
@@ -46,8 +73,16 @@ export function calculatePriceFromAmountAndPricePerUnit(
   }
 }
 
-export function parsePrice(pricePerUnit) {
-  return Number(pricePerUnit.replace(/[^\d.]/g, ''));
+/**
+ * parsePrice
+ * Strips out anything that is not 0-9 or a decimal point
+ * and returns a number.
+ *
+ * @param {string} price
+ * @returns number
+ */
+export function parsePrice(price) {
+  return Number(price.replace(/[^\d.]/g, ''));
 }
 
 export function roundToTwo(num) {

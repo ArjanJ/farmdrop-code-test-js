@@ -8,8 +8,8 @@ export const Products = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // Fetch products once from server.
-    dispatch(getProducts());
+    // Fetch products once from the server.
+    // dispatch(getProducts());
   });
 
   return <ProductsGrid />;

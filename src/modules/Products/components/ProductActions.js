@@ -4,18 +4,18 @@ import styled from 'styled-components';
 import { colors } from '../../../styles/colors';
 
 export const ProductActions = () => (
-  <Wrapper>
-    <Square />
+  <ProductActionsWrapper>
+    <ProductActionsSquare />
     <Button type="button">Add</Button>
-  </Wrapper>
+  </ProductActionsWrapper>
 );
 
-const Wrapper = styled.div`
+const ProductActionsWrapper = styled.div`
   display: flex;
   align-items: center;
 `;
 
-const Square = styled.div`
+const ProductActionsSquare = styled.div`
   border: 1px solid ${colors.LIGHT_GREEN};
   height: 40px;
   width: 40px;
