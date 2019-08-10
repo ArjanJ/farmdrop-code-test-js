@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
@@ -29,3 +30,9 @@ export const Spinner = ({ color, size, stroke = 5 }) => (
     </g>
   </Spinning>
 );
+
+Spinner.propTypes = {
+  color: PropTypes.string.isRequired,
+  size: PropTypes.number.isRequired,
+  stroke: PropTypes.number,
+};
