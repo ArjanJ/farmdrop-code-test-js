@@ -12,7 +12,7 @@ export const ProductVariants = ({
 }) => {
   const handleChange = value => setVariant(variants[value]);
 
-  const valueIndex = variants.findIndex(
+  const selectedIndex = variants.findIndex(
     v => v.measurement.displayName === variant.measurement.displayName
   );
 
@@ -30,7 +30,7 @@ export const ProductVariants = ({
         <Dropdown
           onChange={handleChange}
           options={variantOptions}
-          value={valueIndex}
+          selected={selectedIndex}
         />
       )}
     </ProductVariantsWrapper>

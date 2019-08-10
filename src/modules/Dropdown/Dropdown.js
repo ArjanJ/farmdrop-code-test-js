@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Fragment, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
@@ -79,6 +80,17 @@ export const Dropdown = ({ onChange, options = [], selected }) => {
   );
 };
 
+Dropdown.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    })
+  ).isRequired,
+  selected: PropTypes.number.isRequired,
+};
+
 const DropdownChevron = () => (
   <DropdownChevronSvg
     xmlns="http://www.w3.org/2000/svg"
@@ -124,7 +136,7 @@ const DropdownOptions = styled.div`
   overflow: hidden;
   opacity: ${({ isOpen }) => (isOpen ? 1 : 0)};
   position: absolute;
-  top: 40px;
+  top: 36px;
   transition: all 0.15s ease-out;
   visibility: ${({ isOpen }) => (isOpen ? 'visible' : 'hidden')};
   width: 100%;
