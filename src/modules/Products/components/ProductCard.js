@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 import { colors } from '../../../styles/colors';
+import { easing } from '../../../styles/easing';
 import { ProductActions } from './ProductActions';
 import { ProductMedia } from './ProductMedia';
 import { ProductPrices } from './ProductPrices';
@@ -53,10 +54,17 @@ ProductCard.propTypes = {
   }).isRequired,
 };
 
+const fadeIn = keyframes`
+  from { opacity: 0; }
+  to { opacity: 1; }
+`;
+
 const ProductCardItem = styled.li`
+  animation: ${fadeIn} 2s 0.2s ${easing.OUT} forwards;
   border: 1px solid ${colors.LIGHT_GREEN};
   display: flex;
   flex-direction: column;
+  opacity: 0;
   overflow: hidden;
 `;
 

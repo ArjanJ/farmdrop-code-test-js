@@ -3,11 +3,14 @@ import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import { Product } from './Product';
+import { ProductsLoading } from './ProductsLoading';
 
 export const ProductsGrid = () => {
-  const { products } = useSelector(state => state.products);
+  const { isFetching, products } = useSelector(state => state.products);
 
-  return (
+  return isFetching ? (
+    <ProductsLoading />
+  ) : (
     <ProductsGridList>
       {products.map(product => (
         <Product key={product.name} product={product} />
@@ -21,7 +24,7 @@ const ProductsGridList = styled.ul`
   grid-gap: 16px;
   grid-template-columns: repeat(auto-fill, minmax(264px, 1fr));
   list-style-type: none;
-  margin: auto;
+  margin: 0 auto 36px;
   max-width: 1140px;
   padding: 0 12px;
 `;
