@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import { colors } from '../../../styles/colors';
@@ -7,34 +7,39 @@ import { ProductMedia } from './ProductMedia';
 import { ProductPrice } from './ProductPrice';
 import { ProductVariants } from './ProductVariants';
 
-export const ProductCard = ({ product }) => (
-  <Card>
-    <ProductMedia
-      alt={product.name}
-      media={product.media[0].url}
-      tags={product.tags}
-    />
-    <CardContent>
-      <div>
-        <CardName>{product.name}</CardName>
-        <CardProducerName>{product.producer.name}</CardProducerName>
-        <ProductVariants
-          displayName={product.measurement.displayName}
-          variants={product.variants}
-        />
-      </div>
-      <div>
-        <ProductPrice
-          price={product.price}
-          pricePerUnit={product.pricePerUnit}
-          saleText={product.saleText}
-          salePrice={product.salePrice}
-        />
-        <ProductActions />
-      </div>
-    </CardContent>
-  </Card>
-);
+export const ProductCard = ({ product }) => {
+  const [pricePerUnit, setPricePerUnit] = useState(product.pricePerUnit);
+
+  return (
+    <Card>
+      <ProductMedia
+        alt={product.name}
+        media={product.media[0].url}
+        tags={product.tags}
+      />
+      <CardContent>
+        <div>
+          <CardName>{product.name}</CardName>
+          <CardProducerName>{product.producer.name}</CardProducerName>
+          <ProductVariants
+            displayName={product.measurement.displayName}
+            setPricePerUnit={setPricePerUnit}
+            variants={product.variants}
+          />
+        </div>
+        <div>
+          <ProductPrice
+            price={product.price}
+            pricePerUnit={pricePerUnit}
+            saleText={product.saleText}
+            salePrice={product.salePrice}
+          />
+          <ProductActions />
+        </div>
+      </CardContent>
+    </Card>
+  );
+};
 
 const Card = styled.li`
   border: 1px solid ${colors.LIGHT_GREEN};

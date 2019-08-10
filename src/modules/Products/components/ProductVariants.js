@@ -3,7 +3,13 @@ import styled from 'styled-components';
 
 import { colors } from '../../../styles/colors';
 
-export const ProductVariants = ({ displayName, variants = [] }) => {
+export const ProductVariants = ({
+  displayName,
+  setPricePerUnit,
+  variants = [],
+}) => {
+  const handleChange = ({ target }) => setPricePerUnit(target.value);
+
   return (
     <Wrapper>
       {!variants.length && displayName && (
@@ -11,13 +17,13 @@ export const ProductVariants = ({ displayName, variants = [] }) => {
       )}
       {variants.length > 0 && (
         <SelectWrapper>
-          <Select>
-            {variants.map(({ measurement }) => (
+          <Select onChange={handleChange}>
+            {variants.map(variant => (
               <option
-                key={measurement.displayName}
-                value={measurement.displayName}
+                key={variant.measurement.displayName}
+                value={variant.pricePerUnit}
               >
-                {measurement.displayName}
+                {variant.measurement.displayName}
               </option>
             ))}
           </Select>
