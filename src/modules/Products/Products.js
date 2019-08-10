@@ -9,7 +9,7 @@ export const Products = () => {
 
   useEffect(() => {
     // Fetch products once from the server.
-    // dispatch(getProducts());
+    dispatch(getProducts());
   });
 
   return <ProductsGrid />;
