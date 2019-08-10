@@ -2,33 +2,23 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { colors } from '../../../styles/colors';
-
-const format = num =>
-  new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' }).format(
-    num
-  );
-
-function parseDiscount(discount) {
-  return Number(discount.replace(/[^\d.]/g, ''));
-}
-
-function addDiscount(price, discount) {
-  return price - price * (discount / 100);
-}
-
-function formatPriceWithDiscount(price, discount) {
-  return format(addDiscount(price, parseDiscount(discount)) / 100);
-}
+import {
+  applyDiscount,
+  formatCurrency,
+  parsePrice,
+} from '../../../utils/utils';
 
 export const ProductPrice = ({ price, pricePerUnit, saleText, salePrice }) => (
   <Wrapper>
     {saleText && <SaleText>{saleText}</SaleText>}
-    {salePrice && <OldPrice>{format(price.pence / 100)}</OldPrice>}
+    {salePrice && <OldPrice>{formatCurrency(price.pence / 100)}</OldPrice>}
     <PriceRow>
       <Price isSale={!!salePrice}>
-        {salePrice
-          ? formatPriceWithDiscount(price.pence, saleText)
-          : format(price.pence / 100)}
+        {formatCurrency(
+          salePrice
+            ? applyDiscount(price.pence, parsePrice(saleText)) / 100
+            : price.pence / 100
+        )}
       </Price>
       <PricePerUnit>{pricePerUnit.pricePerUnit}</PricePerUnit>
     </PriceRow>
