@@ -3,17 +3,24 @@ import styled from 'styled-components';
 
 import { colors } from '../../styles/colors';
 
-export const Dropdown = ({ onChange, options = [], value }) => {
+/**
+ * Dropdown
+ *
+ * @param {function} onChange Callback that fires when an option is selected.
+ * @param {array} options List of { name: string, value: string | number } objects.
+ * @param {number} selected The index of the currently selected option.
+ */
+export const Dropdown = ({ onChange, options = [], selected }) => {
   const [isOpen, setIsOpen] = useState(false);
   const node = useRef();
 
-  const handleDocClick = event => {
-    if (node.current.contains(event.target)) {
-      // Inside Toggle click.
+  const handleDocClick = ({ target }) => {
+    if (node.current.contains(target)) {
+      // Inside Toggle click, keep dropdown open.
       return null;
     }
 
-    // Outside Toggle click.
+    // Closes dropdown when you click outside of it.
     setIsOpen(false);
   };
 
@@ -37,21 +44,24 @@ export const Dropdown = ({ onChange, options = [], value }) => {
   }, [isOpen]);
 
   const handleToggleClick = () => setIsOpen(!isOpen);
+
   const handleChange = ({ target }) => {
     onChange(target.value);
+
+    // Close dropdown when an option is selected.
     handleToggleClick();
   };
 
   return (
     <DropdownWrapper ref={node}>
       <DropdownCurrentValue onClick={handleToggleClick}>
-        {options[value].name}
+        {options[selected].name}
       </DropdownCurrentValue>
       <DropdownOptions isOpen={isOpen}>
         {options.map(option => (
           <Fragment key={option.value}>
             <DropdownInput
-              checked={value === option.value}
+              checked={selected === option.value}
               id={option.name}
               name={option.name}
               onChange={handleChange}
