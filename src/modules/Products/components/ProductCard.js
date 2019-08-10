@@ -21,6 +21,7 @@ export const ProductCard = ({ price, product, setVariant, variant }) => (
         <ProductVariants
           displayName={product.measurement.displayName}
           setVariant={setVariant}
+          variant={variant}
           variants={product.variants}
         />
       </div>

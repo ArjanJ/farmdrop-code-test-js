@@ -3,16 +3,19 @@ import styled from 'styled-components';
 
 import { colors } from '../../../styles/colors';
 
-export const ProductMedia = ({ alt, media, tags = [] }) => (
-  <Media src={media}>
+export const ProductMedia = React.memo(({ alt, media, tags = [] }) => (
+  <Media url={media}>
     {tags.map(tag => (
       <Tag key={tag.name}>{tag.name}</Tag>
     ))}
   </Media>
-);
+));
 
-const Media = styled.div`
-  background: url('${({ src }) => src}') center/cover no-repeat;
+const Media = styled.div.attrs(({ url }) => ({
+  style: {
+    background: `url(${url}) center/cover no-repeat`,
+  },
+}))`
   height: 197px
   position: relative;
 `;
