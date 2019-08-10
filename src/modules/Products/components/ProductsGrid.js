@@ -18,7 +18,7 @@ export const ProductsGrid = () => {
 
 const Grid = styled.ul`
   display: grid;
-  grid-gap: 24px;
+  grid-gap: 16px;
   grid-template-columns: repeat(auto-fill, minmax(264px, 1fr));
   list-style-type: none;
   margin: auto;

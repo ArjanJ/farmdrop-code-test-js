@@ -21,27 +21,33 @@ export const ProductPrice = ({ price, pricePerUnit, saleText, salePrice }) => {
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  height: 120px;
   justify-content: flex-end;
 `;
 
 const PriceRow = styled.div`
-  align-items: center;
+  align-items: flex-end;
   display: flex;
   justify-content: space-between;
 `;
 
 const Price = styled.span`
   color: ${({ isSale }) => (isSale ? colors.RED : colors.BLACK)};
+  font-size: 24px;
 `;
 
 const OldPrice = styled.p`
+  color: ${colors.BLACK};
+  margin-bottom: 18px;
   text-decoration: line-through;
 `;
 
 const SaleText = styled.p`
   color: ${colors.RED};
+  font-weight: 500;
+  margin-bottom: 18px;
 `;
 
 const PricePerUnit = styled.span`
-  color: ${colors.BLACK};
+  color: ${colors.DARK_GREEN};
 `;

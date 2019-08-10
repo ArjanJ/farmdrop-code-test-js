@@ -10,7 +10,7 @@ export const ProductVariants = ({ displayName, variants = [] }) => {
         <DisplayName>{displayName}</DisplayName>
       )}
       {variants.length > 0 && (
-        <select>
+        <Select>
           {variants.map(({ measurement }) => (
             <option
               key={measurement.displayName}
@@ -19,19 +19,29 @@ export const ProductVariants = ({ displayName, variants = [] }) => {
               {measurement.displayName}
             </option>
           ))}
-        </select>
+        </Select>
       )}
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 `;
 
 const DisplayName = styled.p`
   color: ${colors.GREEN_2};
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 17px;
   text-transform: uppercase;
+`;
+
+const Select = styled.select`
+  -webkit-appearance: none;
+  background: ${colors.LIGHT_GREEN_2};
+  border-radius: 3px;
+  color: #6e8682;
+  height: 36px;
+  padding: 0 12px;
+  text-transform: uppercase;
+  width: 100%;
 `;

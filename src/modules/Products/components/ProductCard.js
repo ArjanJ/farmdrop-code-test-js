@@ -14,29 +14,38 @@ export const ProductCard = ({ product }) => (
       tags={product.tags}
     />
     <CardContent>
-      <CardName>{product.name}</CardName>
-      <CardProducerName>{product.producer.name}</CardProducerName>
-      <ProductVariants
-        displayName={product.measurement.displayName}
-        variants={product.variants}
-      />
-      <ProductPrice
-        price={product.price}
-        pricePerUnit={product.pricePerUnit}
-        saleText={product.saleText}
-        salePrice={product.salePrice}
-      />
+      <div>
+        <CardName>{product.name}</CardName>
+        <CardProducerName>{product.producer.name}</CardProducerName>
+        <ProductVariants
+          displayName={product.measurement.displayName}
+          variants={product.variants}
+        />
+      </div>
+      <div>
+        <ProductPrice
+          price={product.price}
+          pricePerUnit={product.pricePerUnit}
+          saleText={product.saleText}
+          salePrice={product.salePrice}
+        />
+      </div>
     </CardContent>
   </Card>
 );
 
 const Card = styled.li`
   border: 1px solid ${colors.LIGHT_GREEN};
-  min-height: 440px;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
 `;
 
 const CardContent = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 20px;
 `;
 

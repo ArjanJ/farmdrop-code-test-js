@@ -4,8 +4,7 @@ import styled from 'styled-components';
 import { colors } from '../../../styles/colors';
 
 export const ProductMedia = ({ alt, media, tags = [] }) => (
-  <Media>
-    <Img alt={alt} src={media} />
+  <Media src={media}>
     {tags.map(tag => (
       <Tag key={tag.name}>{tag.name}</Tag>
     ))}
@@ -13,12 +12,9 @@ export const ProductMedia = ({ alt, media, tags = [] }) => (
 );
 
 const Media = styled.div`
+  background: url('${({ src }) => src}') center/cover no-repeat;
   height: 197px
   position: relative;
-`;
-
-const Img = styled.img`
-  height: 100%;
 `;
 
 const Tag = styled.p`
