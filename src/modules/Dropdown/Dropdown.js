@@ -133,9 +133,11 @@ const DropdownCurrentValue = styled.button`
   max-width: 80%;
   overflow: hidden;
   padding: 10px 12px;
+  text-align: left;
   text-overflow: ellipsis;
   text-transform: uppercase;
   white-space: nowrap;
+  width: 100%;
 `;
 
 const DropdownOptions = styled.ul`
