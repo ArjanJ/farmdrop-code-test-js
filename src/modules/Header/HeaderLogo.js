@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 
 export const HeaderLogo = ({ height = 26, width = 100 }) => (
   <svg
+    data-testid="logo"
     xmlns="http://www.w3.org/2000/svg"
     width={width}
     height={height}
