@@ -5,7 +5,7 @@ import { Dropdown } from './Dropdown';
 
 afterEach(cleanup);
 
-const options = [
+const dropdownOptions = [
   {
     name: 'goku',
     value: 0,
@@ -19,7 +19,7 @@ const options = [
 describe('<Dropdown />', () => {
   it('renders name of option', () => {
     const { getAllByTestId } = render(
-      <Dropdown onChange={jest.fn()} options={options} selected={0} />
+      <Dropdown onChange={jest.fn()} options={dropdownOptions} selected={0} />
     );
 
     expect(
@@ -31,17 +31,17 @@ describe('<Dropdown />', () => {
 
   it('renders selected index as current value', () => {
     const { getByTestId } = render(
-      <Dropdown onChange={jest.fn()} options={options} selected={1} />
+      <Dropdown onChange={jest.fn()} options={dropdownOptions} selected={1} />
     );
 
     expect(getByTestId('dropdown-current-value').textContent).toBe(
-      options[1].name
+      dropdownOptions[1].name
     );
   });
 
   it('expands dropdown when clicked', async () => {
     const { getByTestId } = render(
-      <Dropdown onChange={jest.fn()} options={options} selected={1} />
+      <Dropdown onChange={jest.fn()} options={dropdownOptions} selected={1} />
     );
 
     await fireEvent.click(getByTestId('dropdown-current-value'));
@@ -53,11 +53,11 @@ describe('<Dropdown />', () => {
   it('fires onChange once when an option is clicked', async () => {
     const onChange = jest.fn();
     const { getByTestId, getByLabelText } = render(
-      <Dropdown onChange={onChange} options={options} selected={1} />
+      <Dropdown onChange={onChange} options={dropdownOptions} selected={1} />
     );
 
     await fireEvent.click(getByTestId('dropdown-current-value'));
-    await fireEvent.click(getByLabelText(options[0].name));
+    await fireEvent.click(getByLabelText(dropdownOptions[0].name));
 
     expect(onChange).toHaveBeenCalledTimes(1);
   });
