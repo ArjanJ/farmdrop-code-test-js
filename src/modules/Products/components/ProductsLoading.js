@@ -6,8 +6,8 @@ import { Spinner } from '../../Spinner/Spinner';
 
 export const ProductsLoading = () => (
   <ProductsLoadingWrapper>
-    <ProductsLoadingText data-testid="loading">Loading</ProductsLoadingText>
-    <Spinner color={colors.GREEN} size={36} stroke={3} />
+    <Spinner color={colors.GREEN} size={30} stroke={2} />
+    <ProductsLoadingText data-testid="loading">Loading...</ProductsLoadingText>
   </ProductsLoadingWrapper>
 );
 
@@ -21,5 +21,5 @@ const ProductsLoadingWrapper = styled.div`
 
 const ProductsLoadingText = styled.span`
   color: ${colors.DARK_GREEN};
-  margin-right: 8px;
+  margin-left: 6px;
 `;
