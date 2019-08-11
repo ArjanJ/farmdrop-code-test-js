@@ -1,5 +1,4 @@
-export const ADD_TO_BASKET = 'ADD_TO_BASKET';
-export const REMOVE_FROM_BASKET = 'REMOVE_FROM_BASKET';
+import { ADD_TO_BASKET, REMOVE_FROM_BASKET } from '../constants/ActionTypes';
 
 export function addToBasket(productName) {
   return {

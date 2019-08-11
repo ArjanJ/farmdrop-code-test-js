@@ -1,9 +1,5 @@
-import {
-  ADD_TO_BASKET,
-  addToBasket,
-  REMOVE_FROM_BASKET,
-  removeFromBasket,
-} from './basketActions';
+import { addToBasket, removeFromBasket } from './basketActions';
+import { ADD_TO_BASKET, REMOVE_FROM_BASKET } from '../constants/ActionTypes';
 
 describe('actions', () => {
   it('should create an action to add to basket', () => {

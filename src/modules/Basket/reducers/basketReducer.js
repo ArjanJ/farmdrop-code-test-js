@@ -1,4 +1,4 @@
-import { ADD_TO_BASKET, REMOVE_FROM_BASKET } from '../actions/basketActions';
+import { ADD_TO_BASKET, REMOVE_FROM_BASKET } from '../constants/ActionTypes';
 
 const initialState = {
   addedIds: [],
