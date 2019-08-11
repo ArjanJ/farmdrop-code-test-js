@@ -40,9 +40,10 @@ npm run test
 - Redux
 - Styled Components
 - GraphQL
+- Jest + React Testing Library
 
 You will find everything in `src/modules`. I've organized the folders by feature, e.g. Product and Basket are their own isolated modules that have their corresponding actions and reducers grouped together.
 
 ### Misc
 
-One requirement I wasn't entirely clear on was updating the `price` when selecting a `variant` in the dropdown. Each `variant` has a `pricePerUnit` but no corresponding "amount" of the product. The `displayName` usually contained the amount in the string e.g. `BONE IN (2KG)` so I parsed those strings to extract the amount of the product and used that value to calculate the new price based on which `variant` was selected.
+One requirement I wasn't entirely clear on was updating the `price` when selecting a `variant` in the dropdown. Each `variant` has a `pricePerUnit` but no corresponding "amount" of the product. The `displayName` contains the amount in the string e.g. `BONE IN (2KG)` so I parsed that to extract the "amount" of the product and used that value to calculate the new price based on which `variant` was selected.
