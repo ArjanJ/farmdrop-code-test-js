@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
+import { breakpoints } from '../../../styles/breakpoints';
 import { colors } from '../../../styles/colors';
 import { easing } from '../../../styles/easing';
 import { ProductActions } from './ProductActions';
@@ -61,11 +62,16 @@ const fadeIn = keyframes`
 
 const ProductCardItem = styled.li`
   animation: ${fadeIn} 2s 0.2s ${easing.OUT} forwards;
-  border: 1px solid ${colors.LIGHT_GREEN};
+  border-bottom: 1px solid ${colors.LIGHT_GREEN};
+  border-top: 1px solid ${colors.LIGHT_GREEN};
   display: flex;
-  flex-direction: column;
   opacity: 0;
   overflow: hidden;
+
+  @media ${breakpoints.MOBILE} {
+    border: 1px solid ${colors.LIGHT_GREEN};
+    flex-direction: column;
+  }
 `;
 
 const ProductCardContent = styled.div`
@@ -73,16 +79,29 @@ const ProductCardContent = styled.div`
   flex: 1;
   flex-direction: column;
   justify-content: space-between;
-  padding: 20px;
+  padding: 12px;
+
+  @media ${breakpoints.MOBILE} {
+    padding: 20px;
+  }
 `;
 
 const ProductName = styled.h2`
-  font-size: 17px;
+  font-size: 15px;
   margin-bottom: 16px;
+
+  @media ${breakpoints.MOBILE} {
+    font-size: 17px;
+  }
 `;
 
 const ProductProducerName = styled.p`
   color: ${colors.GREEN};
+  font-size: 14px;
   font-weight: 500;
   margin-bottom: 16px;
+
+  @media ${breakpoints.MOBILE} {
+    font-size: 16px;
+  }
 `;

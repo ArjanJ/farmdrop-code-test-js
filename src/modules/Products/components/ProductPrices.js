@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 
+import { breakpoints } from '../../../styles/breakpoints';
 import { colors } from '../../../styles/colors';
 import {
   applyDiscount,
@@ -42,9 +43,13 @@ ProductPrices.propTypes = {
 const ProductPriceWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  height: 120px;
+  height: 110px;
   justify-content: flex-end;
   margin-bottom: 16px;
+
+  @media ${breakpoints.MOBILE} {
+    height: 120px;
+  }
 `;
 
 const ProductPriceRow = styled.div`
@@ -55,7 +60,11 @@ const ProductPriceRow = styled.div`
 
 const ProductPrice = styled.span`
   color: ${({ isSale }) => (isSale ? colors.RED : colors.BLACK)};
-  font-size: 24px;
+  font-size: 18px;
+
+  @media ${breakpoints.MOBILE} {
+    font-size: 24px;
+  }
 `;
 
 const ProductOldPrice = styled.p`
@@ -72,4 +81,9 @@ const ProductSaleText = styled.p`
 
 const ProductPricePerUnit = styled.span`
   color: ${colors.DARK_GREEN};
+  font-size: 14px;
+
+  @media ${breakpoints.MOBILE} {
+    font-size: 16px;
+  }
 `;

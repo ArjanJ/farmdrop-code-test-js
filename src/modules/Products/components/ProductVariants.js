@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 
+import { breakpoints } from '../../../styles/breakpoints';
 import { colors } from '../../../styles/colors';
 import { Dropdown } from '../../Dropdown/Dropdown';
 
@@ -59,6 +60,10 @@ const ProductVariantsWrapper = styled.div`
 
 const ProductDisplayName = styled.p`
   color: ${colors.GREEN_2};
-  font-size: 17px;
+  font-size: 15px;
   text-transform: uppercase;
+
+  @media ${breakpoints.MOBILE} {
+    font-size: 17px;
+  }
 `;

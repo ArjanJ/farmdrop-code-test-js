@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 
+import { breakpoints } from '../../../styles/breakpoints';
 import { colors } from '../../../styles/colors';
 import { ProductBasketOverlay } from './ProductBasketOverlay';
 
@@ -29,8 +30,13 @@ const Media = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 216px;
+  min-width: 50%;
   position: relative;
+
+  @media ${breakpoints.MOBILE} {
+    height: 216px;
+    min-width: 0;
+  }
 `;
 
 const Tag = styled.p`

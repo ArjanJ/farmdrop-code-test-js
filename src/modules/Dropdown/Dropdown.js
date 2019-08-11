@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
+import { breakpoints } from '../../styles/breakpoints';
 import { colors } from '../../styles/colors';
 import { easing } from '../../styles/easing';
 
@@ -119,10 +120,15 @@ const DropdownWrapper = styled.div`
   border-radius: 3px;
   cursor: pointer;
   position: relative;
+  width: 162px;
   transition: background 0.3s ${easing.OUT};
 
   &:hover {
     background: #dee3dc;
+  }
+
+  @media ${breakpoints.MOBILE} {
+    width: auto;
   }
 `;
 
@@ -130,6 +136,7 @@ const DropdownCurrentValue = styled.button`
   background: none;
   border: none;
   color: #6e8682;
+  font-size: 14px;
   max-width: 80%;
   overflow: hidden;
   padding: 10px 12px;
@@ -138,6 +145,10 @@ const DropdownCurrentValue = styled.button`
   text-transform: uppercase;
   white-space: nowrap;
   width: 100%;
+
+  @media ${breakpoints.MOBILE} {
+    font-size: 16px;
+  }
 `;
 
 const DropdownOptions = styled.ul`
@@ -169,7 +180,7 @@ const DropdownOptionLabel = styled.label`
   color: #6e8682;
   cursor: pointer;
   display: block;
-  font-size: 14px;
+  font-size: 13px;
   padding: 6px 12px;
   text-transform: uppercase;
   transition: background 0.3s ${easing.OUT};
@@ -181,6 +192,10 @@ const DropdownOptionLabel = styled.label`
   &:hover {
     background: ${colors.DARK_GREEN};
     color: white;
+  }
+
+  @media ${breakpoints.MOBILE} {
+    font-size: 14px;
   }
 `;
 
