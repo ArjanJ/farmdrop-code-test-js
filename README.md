@@ -32,6 +32,12 @@ http://localhost:3000/ should open automatically.
 npm run test
 ```
 
+To see a coverage report run this command. Currently at ~96% coverage.
+
+```
+npm run coverage
+```
+
 ## Overview
 
 ### Stack
