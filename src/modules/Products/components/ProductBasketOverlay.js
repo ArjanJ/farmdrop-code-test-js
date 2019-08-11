@@ -11,7 +11,9 @@ export const ProductBasketOverlay = ({ productName }) => {
 
   return (
     <ProductBasketOverlayWrapper show={quantity > 0}>
-      <ProductBasketOverlayText>{quantity} in basket</ProductBasketOverlayText>
+      <ProductBasketOverlayText>
+        <span data-testid="quantity">{quantity}</span> in basket
+      </ProductBasketOverlayText>
     </ProductBasketOverlayWrapper>
   );
 };

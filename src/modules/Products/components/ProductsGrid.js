@@ -11,7 +11,7 @@ export const ProductsGrid = () => {
   return isFetching ? (
     <ProductsLoading />
   ) : (
-    <ProductsGridList>
+    <ProductsGridList data-testid="products-list">
       {products.map(product => (
         <Product key={product.name} product={product} />
       ))}

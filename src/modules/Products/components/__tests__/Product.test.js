@@ -6,7 +6,7 @@ import { Product } from '../Product';
 
 afterEach(cleanup);
 
-const sampleProduct = {
+export const sampleProduct = {
   name: 'Organic Highgrove Rack of Ribs (Whole Breast)',
   producer: {
     name: 'Home Farm Highgrove',

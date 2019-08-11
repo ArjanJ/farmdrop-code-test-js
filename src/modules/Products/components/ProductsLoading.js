@@ -6,7 +6,7 @@ import { Spinner } from '../../Spinner/Spinner';
 
 export const ProductsLoading = () => (
   <ProductsLoadingWrapper>
-    <ProductsLoadingText>Loading</ProductsLoadingText>
+    <ProductsLoadingText data-testid="loading">Loading</ProductsLoadingText>
     <Spinner color={colors.GREEN} size={36} stroke={3} />
   </ProductsLoadingWrapper>
 );
