@@ -7,7 +7,7 @@ import { sampleProduct } from './Product.test';
 
 afterEach(cleanup);
 
-describe('<ProductPrices />', () => {
+describe('<ProductsGrid />', () => {
   it('renders loading component if fetching products', async () => {
     const { getByTestId } = renderWithRedux(<ProductsGrid />, {
       initialState: {

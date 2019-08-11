@@ -28,11 +28,13 @@ export const ProductVariants = ({
         <ProductDisplayName>{displayName}</ProductDisplayName>
       )}
       {variants.length > 0 && (
-        <Dropdown
-          onChange={handleChange}
-          options={variantOptions}
-          selected={selectedIndex}
-        />
+        <span data-testid="variants-dropdown">
+          <Dropdown
+            onChange={handleChange}
+            options={variantOptions}
+            selected={selectedIndex}
+          />
+        </span>
       )}
     </ProductVariantsWrapper>
   );
