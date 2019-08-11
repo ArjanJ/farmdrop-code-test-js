@@ -41,7 +41,7 @@ npm run test
 - Styled Components
 - GraphQL
 
-You will find everything in `src/modules`. I've organized the projects by feature, e.g. Product and Basket are their own isolated modules that have their corresponding actions and reducers grouped together.
+You will find everything in `src/modules`. I've organized the folders by feature, e.g. Product and Basket are their own isolated modules that have their corresponding actions and reducers grouped together.
 
 ### Misc
 
