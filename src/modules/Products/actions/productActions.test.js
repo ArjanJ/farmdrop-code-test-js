@@ -32,13 +32,16 @@ const productSearchSchemaString = `
   }
 `;
 
+// This is the list of nodes the test will expect.
+const mockProductSuccessResponse = [{ name: 'Lamb', price: { pence: 100 } }];
+
 // Mock graphql server.
 const mockProductService = mockServer(
   productSearchSchemaString,
   {
     Query: () => ({
       productSearch: () => ({
-        nodes: [{ name: 'Lamb', price: { pence: 100 } }],
+        nodes: mockProductSuccessResponse,
       }),
     }),
   },
@@ -85,7 +88,7 @@ describe('async actions', () => {
       { type: GET_PRODUCTS_REQUEST },
       {
         type: GET_PRODUCTS_SUCCESS,
-        payload: [{ name: 'Lamb', price: { pence: 100 } }],
+        payload: mockProductSuccessResponse,
       },
     ];
 
