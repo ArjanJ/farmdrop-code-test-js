@@ -39,7 +39,7 @@ describe('<Dropdown />', () => {
     );
   });
 
-  it('expands dropdown when clicked', async () => {
+  it('expands and collapses dropdown when clicked and clicked off', async () => {
     const { getByTestId } = render(
       <Dropdown onChange={jest.fn()} options={dropdownOptions} selected={1} />
     );
@@ -48,6 +48,11 @@ describe('<Dropdown />', () => {
     expect(
       getByTestId('dropdown-current-value').getAttribute('aria-expanded')
     ).toBe('true');
+
+    await fireEvent.mouseDown(window.document);
+    expect(
+      getByTestId('dropdown-current-value').getAttribute('aria-expanded')
+    ).toBe('false');
   });
 
   it('fires onChange once when an option is clicked', async () => {
@@ -60,5 +65,17 @@ describe('<Dropdown />', () => {
     await fireEvent.click(getByLabelText(dropdownOptions[0].name));
 
     expect(onChange).toHaveBeenCalledTimes(1);
+  });
+
+  it('collapses dropdown when esc key pressed', async () => {
+    const { getByTestId } = render(
+      <Dropdown onChange={jest.fn()} options={dropdownOptions} selected={1} />
+    );
+
+    await fireEvent.click(getByTestId('dropdown-current-value'));
+    await fireEvent.keyDown(window.document, { key: 'Escape', keyCode: 27 });
+    expect(
+      getByTestId('dropdown-current-value').getAttribute('aria-expanded')
+    ).toBe('false');
   });
 });
