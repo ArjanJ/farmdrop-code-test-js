@@ -1,7 +1,7 @@
 import { cleanup, fireEvent, render } from '@testing-library/react';
 import React from 'react';
 
-import { Dropdown } from './Dropdown';
+import { Dropdown } from '../Dropdown';
 
 afterEach(cleanup);
 

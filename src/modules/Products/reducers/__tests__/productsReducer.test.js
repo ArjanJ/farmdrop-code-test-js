@@ -1,9 +1,9 @@
-import productsReducer from './productsReducer';
 import {
   GET_PRODUCTS_REQUEST,
   GET_PRODUCTS_SUCCESS,
   GET_PRODUCTS_FAILURE,
-} from '../constants/ActionTypes';
+} from '../../constants/ActionTypes';
+import productsReducer from '../productsReducer';
 
 describe('reducer', () => {
   describe('products', () => {

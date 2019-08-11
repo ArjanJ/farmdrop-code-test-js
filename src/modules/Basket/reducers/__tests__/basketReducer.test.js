@@ -1,5 +1,5 @@
-import { ADD_TO_BASKET, REMOVE_FROM_BASKET } from '../constants/ActionTypes';
-import basketReducer from './basketReducer';
+import { ADD_TO_BASKET, REMOVE_FROM_BASKET } from '../../constants/ActionTypes';
+import basketReducer from '../basketReducer';
 
 describe('reducer', () => {
   describe('basket', () => {

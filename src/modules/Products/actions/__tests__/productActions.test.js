@@ -6,8 +6,8 @@ import {
   GET_PRODUCTS_REQUEST,
   GET_PRODUCTS_SUCCESS,
   GET_PRODUCTS_FAILURE,
-} from '../constants/ActionTypes';
-import { getProducts } from './productActions';
+} from '../../constants/ActionTypes';
+import { getProducts } from '../productActions';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
