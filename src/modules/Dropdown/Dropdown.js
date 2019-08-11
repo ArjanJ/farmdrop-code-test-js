@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { Fragment, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 import { colors } from '../../styles/colors';
@@ -56,12 +56,16 @@ export const Dropdown = ({ onChange, options = [], selected }) => {
 
   return (
     <DropdownWrapper ref={node}>
-      <DropdownCurrentValue onClick={handleToggleClick}>
+      <DropdownCurrentValue
+        aria-expanded={isOpen}
+        data-testid="dropdown-current-value"
+        onClick={handleToggleClick}
+      >
         {options[selected].name}
       </DropdownCurrentValue>
       <DropdownOptions isOpen={isOpen}>
         {options.map(option => (
-          <Fragment key={option.value}>
+          <li key={option.value}>
             <DropdownInput
               checked={selected === option.value}
               id={option.name}
@@ -71,9 +75,11 @@ export const Dropdown = ({ onChange, options = [], selected }) => {
               value={option.value}
             />
             <DropdownOptionLabel htmlFor={option.name} key={option.value}>
-              <DropdownOptionText>{option.name}</DropdownOptionText>
+              <DropdownOptionText data-testid="dropdown-option-name">
+                {option.name}
+              </DropdownOptionText>
             </DropdownOptionLabel>
-          </Fragment>
+          </li>
         ))}
       </DropdownOptions>
       <DropdownChevron isOpen={isOpen} />
@@ -120,17 +126,19 @@ const DropdownWrapper = styled.div`
   }
 `;
 
-const DropdownCurrentValue = styled.div`
+const DropdownCurrentValue = styled.button`
+  background: none;
+  border: none;
   color: #6e8682;
   max-width: 80%;
   overflow: hidden;
-  padding: 6px 12px;
+  padding: 10px 12px;
   text-overflow: ellipsis;
   text-transform: uppercase;
   white-space: nowrap;
 `;
 
-const DropdownOptions = styled.div`
+const DropdownOptions = styled.ul`
   background: white;
   border: 1px solid ${colors.LIGHT_GREEN};
   border-radius: 3px;
