@@ -1,4 +1,4 @@
-export const productSearchQuery = `{
+export const productSearch = `{
   productSearch(query: "Lamb Roasting Joints", first: 100) {
     nodes {
       name

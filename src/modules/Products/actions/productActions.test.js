@@ -2,12 +2,12 @@ import { mockServer } from 'graphql-tools';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
-import { getProducts } from './productActions';
 import {
   GET_PRODUCTS_REQUEST,
   GET_PRODUCTS_SUCCESS,
   GET_PRODUCTS_FAILURE,
 } from '../constants/ActionTypes';
+import { getProducts } from './productActions';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);

@@ -1,10 +1,10 @@
-import { client } from '../../../queries/client';
-import { productSearchQuery } from '../../../queries/productSearchQuery';
+import { ApiClient } from '../../../utils/ApiClient';
 import {
   GET_PRODUCTS_REQUEST,
   GET_PRODUCTS_SUCCESS,
   GET_PRODUCTS_FAILURE,
 } from '../constants/ActionTypes';
+import { productSearch } from '../queries/productQueries';
 
 function getProductsRequest() {
   return {
@@ -27,7 +27,7 @@ function getProductsFailure() {
 }
 
 export function getProducts(
-  service = () => client.rawRequest(productSearchQuery)
+  service = () => ApiClient.rawRequest(productSearch)
 ) {
   return async function(dispatch) {
     dispatch(getProductsRequest());
