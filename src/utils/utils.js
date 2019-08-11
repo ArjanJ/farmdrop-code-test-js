@@ -27,6 +27,13 @@ export function parseAmountAndUnitsFromMeasurement(displayName = '') {
   let amount = '';
   let units = '';
 
+  if (!rawAmount || rawAmount.length === 0) {
+    return {
+      amount: null,
+      units: null,
+    };
+  }
+
   for (let i = 0; i < rawAmount.length; i++) {
     const isNumber = !isNaN(rawAmount[i]);
     const isDecimal = rawAmount[i] === '.' && !isNaN(rawAmount[i - 1]);
@@ -43,7 +50,7 @@ export function parseAmountAndUnitsFromMeasurement(displayName = '') {
 
   return {
     amount: Number(amount.trimLeft()),
-    units,
+    units: units,
   };
 }
 
