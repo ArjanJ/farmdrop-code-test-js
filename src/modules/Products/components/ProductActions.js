@@ -24,17 +24,31 @@ export const ProductActions = ({ productName }) => {
     <ProductActionsWrapper hasQuantity={hasQuantity}>
       <ProductActionsSquare />
       {!hasQuantity && (
-        <ProductActionsAddButton onClick={handleAddClick} type="button">
+        <ProductActionsAddButton
+          data-testid="add-button"
+          onClick={handleAddClick}
+          type="button"
+        >
           Add
         </ProductActionsAddButton>
       )}
       {hasQuantity && (
         <ProductActionsWrapper>
-          <ProductActionsSquareButton onClick={handleRemoveClick} type="button">
+          <ProductActionsSquareButton
+            data-testid="remove-one-button"
+            onClick={handleRemoveClick}
+            type="button"
+          >
             <RemoveIcon />
           </ProductActionsSquareButton>
-          <ProductActionsQuantity>{quantity}</ProductActionsQuantity>
-          <ProductActionsSquareButton onClick={handleAddClick} type="button">
+          <ProductActionsQuantity data-testid="quantity">
+            {quantity}
+          </ProductActionsQuantity>
+          <ProductActionsSquareButton
+            data-testid="add-one-button"
+            onClick={handleAddClick}
+            type="button"
+          >
             <AddIcon />
           </ProductActionsSquareButton>
         </ProductActionsWrapper>
