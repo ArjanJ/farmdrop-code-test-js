@@ -1,9 +1,10 @@
 import { client } from '../../../queries/client';
 import { productSearchQuery } from '../../../queries/productSearchQuery';
-
-export const GET_PRODUCTS_REQUEST = 'GET_PRODUCTS_REQUEST';
-export const GET_PRODUCTS_SUCCESS = 'GET_PRODUCTS_SUCCESS';
-export const GET_PRODUCTS_FAILURE = 'GET_PRODUCTS_FAILURE';
+import {
+  GET_PRODUCTS_REQUEST,
+  GET_PRODUCTS_SUCCESS,
+  GET_PRODUCTS_FAILURE,
+} from '../constants/ActionTypes';
 
 function getProductsRequest() {
   return {
@@ -25,13 +26,15 @@ function getProductsFailure() {
   };
 }
 
-export function getProducts() {
+export function getProducts(
+  service = () => client.rawRequest(productSearchQuery)
+) {
   return async function(dispatch) {
     dispatch(getProductsRequest());
 
     try {
-      const { productSearch } = await client.request(productSearchQuery);
-      return dispatch(getProductsSuccess(productSearch.nodes));
+      const { data } = await service();
+      return dispatch(getProductsSuccess(data.productSearch.nodes));
     } catch (error) {
       return dispatch(getProductsFailure());
     }

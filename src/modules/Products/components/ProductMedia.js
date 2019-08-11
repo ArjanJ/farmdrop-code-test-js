@@ -6,7 +6,7 @@ import { colors } from '../../../styles/colors';
 import { ProductBasketOverlay } from './ProductBasketOverlay';
 
 export const ProductMedia = React.memo(({ media, productName, tags = [] }) => (
-  <Media style={{ background: `url('${media}') center/cover no-repeat` }}>
+  <Media style={{ backgroundImage: `url('${media}')` }}>
     {tags.map(tag => (
       <Tag key={tag.name}>{tag.name}</Tag>
     ))}
@@ -25,7 +25,11 @@ ProductMedia.propTypes = {
 };
 
 const Media = styled.div`
-  height: 216px
+  background-color: ${colors.DARK_GREEN};
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 216px;
   position: relative;
 `;
 
