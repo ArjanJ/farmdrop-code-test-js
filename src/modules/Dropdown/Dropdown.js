@@ -62,7 +62,9 @@ export const Dropdown = ({ onChange, options = [], selected }) => {
         data-testid="dropdown-current-value"
         onClick={handleToggleClick}
       >
-        {options[selected].name}
+        <DropdownCurrentValueText>
+          {options[selected].name}
+        </DropdownCurrentValueText>
       </DropdownCurrentValue>
       <DropdownOptions isOpen={isOpen}>
         {options.map(option => (
@@ -136,19 +138,23 @@ const DropdownCurrentValue = styled.button`
   background: none;
   border: none;
   color: #6e8682;
-  font-size: 14px;
-  max-width: 80%;
-  overflow: hidden;
   padding: 10px 12px;
   text-align: left;
-  text-overflow: ellipsis;
-  text-transform: uppercase;
-  white-space: nowrap;
   width: 100%;
 
   @media ${breakpoints.MOBILE} {
     font-size: 16px;
   }
+`;
+
+const DropdownCurrentValueText = styled.span`
+  display: block;
+  font-size: 14px;
+  max-width: 80%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
 `;
 
 const DropdownOptions = styled.ul`
