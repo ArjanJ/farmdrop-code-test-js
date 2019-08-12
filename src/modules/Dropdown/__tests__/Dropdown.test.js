@@ -41,7 +41,9 @@ describe('<Dropdown />', () => {
 
   it('expands and collapses dropdown when clicked and clicked off', async () => {
     const { getByTestId } = render(
-      <Dropdown onChange={jest.fn()} options={dropdownOptions} selected={1} />
+      <div id="root">
+        <Dropdown onChange={jest.fn()} options={dropdownOptions} selected={1} />
+      </div>
     );
 
     await fireEvent.click(getByTestId('dropdown-current-value'));
@@ -49,7 +51,7 @@ describe('<Dropdown />', () => {
       getByTestId('dropdown-current-value').getAttribute('aria-expanded')
     ).toBe('true');
 
-    await fireEvent.click(window.document);
+    await fireEvent.click(document.getElementById('root'));
     expect(
       getByTestId('dropdown-current-value').getAttribute('aria-expanded')
     ).toBe('false');

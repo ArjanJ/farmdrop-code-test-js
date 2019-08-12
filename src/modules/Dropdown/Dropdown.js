@@ -35,13 +35,20 @@ export const Dropdown = ({ onChange, options = [], selected }) => {
   };
 
   useEffect(() => {
+    // Use root div because document.click doesn't register on iOS.
+    const root = document.getElementById('root');
+
     if (isOpen) {
-      document.addEventListener('click', handleDocClick);
+      if (root) {
+        root.addEventListener('click', handleDocClick);
+      }
       document.addEventListener('keydown', handleKeyDown, false);
     }
 
     return () => {
-      document.removeEventListener('click', handleDocClick);
+      if (root) {
+        root.removeEventListener('click', handleDocClick);
+      }
       document.removeEventListener('keydown', handleKeyDown, false);
     };
   }, [isOpen]);
