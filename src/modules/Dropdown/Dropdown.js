@@ -36,12 +36,12 @@ export const Dropdown = ({ onChange, options = [], selected }) => {
 
   useEffect(() => {
     if (isOpen) {
-      document.addEventListener('mousedown', handleDocClick);
+      document.addEventListener('click', handleDocClick);
       document.addEventListener('keydown', handleKeyDown, false);
     }
 
     return () => {
-      document.removeEventListener('mousedown', handleDocClick);
+      document.removeEventListener('click', handleDocClick);
       document.removeEventListener('keydown', handleKeyDown, false);
     };
   }, [isOpen]);

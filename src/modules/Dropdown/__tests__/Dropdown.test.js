@@ -49,7 +49,7 @@ describe('<Dropdown />', () => {
       getByTestId('dropdown-current-value').getAttribute('aria-expanded')
     ).toBe('true');
 
-    await fireEvent.mouseDown(window.document);
+    await fireEvent.click(window.document);
     expect(
       getByTestId('dropdown-current-value').getAttribute('aria-expanded')
     ).toBe('false');
