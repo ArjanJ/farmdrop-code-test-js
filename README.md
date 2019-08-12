@@ -24,6 +24,10 @@ npm install
 
 ### View in browser
 
+```
+npm start
+```
+
 http://localhost:3000/ should open automatically.
 
 ### Run tests
