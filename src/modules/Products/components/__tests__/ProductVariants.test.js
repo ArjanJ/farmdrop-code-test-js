@@ -2,8 +2,8 @@ import { cleanup } from '@testing-library/react';
 import React from 'react';
 
 import { renderWithRedux } from '../../../../utils/testUtils';
+import * as mock from '../__mocks__/product';
 import { ProductVariants } from '../ProductVariants';
-import { sampleProduct } from './Product.test';
 
 afterEach(cleanup);
 
@@ -11,25 +11,25 @@ describe('<ProductVariants />', () => {
   it('renders displayName if no variants', async () => {
     const { getByText } = renderWithRedux(
       <ProductVariants
-        displayName={sampleProduct.measurement.displayName}
+        displayName={mock.product.measurement.displayName}
         setVariant={jest.fn()}
-        variant={{ measurement: sampleProduct.measurement }}
+        variant={{ measurement: mock.product.measurement }}
         variants={[]}
       />
     );
 
-    expect(getByText(sampleProduct.measurement.displayName).textContent).toBe(
-      sampleProduct.measurement.displayName
+    expect(getByText(mock.product.measurement.displayName).textContent).toBe(
+      mock.product.measurement.displayName
     );
   });
 
   it('renders variant dropdown if there are variants', () => {
     const { getByTestId } = renderWithRedux(
       <ProductVariants
-        displayName={sampleProduct.measurement.displayName}
+        displayName={mock.product.measurement.displayName}
         setVariant={jest.fn()}
-        variant={{ measurement: sampleProduct.measurement }}
-        variants={[{ measurement: sampleProduct.measurement }]}
+        variant={{ measurement: mock.product.measurement }}
+        variants={[{ measurement: mock.product.measurement }]}
       />
     );
 

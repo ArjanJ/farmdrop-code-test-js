@@ -2,8 +2,8 @@ import { cleanup } from '@testing-library/react';
 import React from 'react';
 
 import { renderWithRedux } from '../../../../utils/testUtils';
+import * as mock from '../__mocks__/product';
 import { ProductsGrid } from '../ProductsGrid';
-import { sampleProduct } from './Product.test';
 
 afterEach(cleanup);
 
@@ -25,7 +25,7 @@ describe('<ProductsGrid />', () => {
       initialState: {
         products: {
           isFetching: false,
-          products: [sampleProduct],
+          products: [mock.product],
         },
       },
     });
