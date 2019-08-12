@@ -6,7 +6,7 @@ import {
   parseAmountAndUnitsFromMeasurement,
   parsePrice,
   roundToTwo,
-} from '../../../utils/utils';
+} from '../utils/productUtils';
 import { ProductCard } from './ProductCard';
 
 export const Product = ({ product }) => {

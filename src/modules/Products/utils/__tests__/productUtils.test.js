@@ -6,7 +6,7 @@ import {
   parseAmountAndUnitsFromMeasurement,
   parsePrice,
   roundToTwo,
-} from '../utils';
+} from '../productUtils';
 
 describe('utils', () => {
   describe('applyDiscount', () => {

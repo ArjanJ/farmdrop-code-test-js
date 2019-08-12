@@ -8,7 +8,7 @@ import {
   applyDiscount,
   formatCurrency,
   parsePrice,
-} from '../../../utils/utils';
+} from '../utils/productUtils';
 
 export const ProductPrices = ({ price, pricePerUnit, saleText, salePrice }) => (
   <ProductPriceWrapper>

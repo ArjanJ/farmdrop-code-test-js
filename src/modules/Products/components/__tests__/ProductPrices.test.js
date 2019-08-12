@@ -2,7 +2,7 @@ import { cleanup } from '@testing-library/react';
 import React from 'react';
 
 import { renderWithRedux } from '../../../../utils/testUtils';
-import { formatCurrency } from '../../../../utils/utils';
+import { formatCurrency } from '../../utils/productUtils';
 import { ProductPrices } from '../ProductPrices';
 
 afterEach(cleanup);
